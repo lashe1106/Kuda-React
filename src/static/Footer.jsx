@@ -118,30 +118,29 @@ const Footer = () => {
                     </Contact>
                     <Contact>
                         <h1>Lagos</h1>
-                        <p>1-11 Commercial Avenue, Yaba,</p>
-                        <p>Lagos,</p>
-                        <p>Nigeria</p>
+                        <p>1-11 Commercial Avenue, Yaba, Lagos,<br/>
+                        Nigeria </p>
                     </Contact>
                     <Contact>
                         <h1>London</h1>
-                        <p>5 New Street Square,</p>
-                        <p>London, EC4A 3TW,</p>
-                        <p>United Kingdom</p>
+                        <p>5 New Street Square,<br/>
+                        London, EC4A 3TW,<br/>
+                        United Kingdom</p>
                     </Contact>
                     <Contact>
                         <h1>Cape Town</h1>
-                        <p>146 Campground Road,</p>
-                        <p>Snakepit Building, Level 4,</p>
-                        <p>Newlands, Cape Town</p>
+                        <p>146 Campground Road,<br/>
+                        Snakepit Building, Level 4,<br/>
+                        Newlands, Cape Town</p>
                     </Contact>
                     <Contact>
                         <h1>Canada</h1>
-                        <p>3080 Yonge Street,</p>
-                        <p>Suite 6060, Toronto,</p>
-                        <p>Ontario M4N 3N1</p>
+                        <p>3080 Yonge Street,<br/>
+                        Suite 6060, Toronto,<br/>
+                        Ontario M4N 3N1</p>
                     </Contact>
                 </FooterContact>
-                <FooterInfo>
+                <FooterConditions>
                     {/* <InfoText>
                         <p>*Kuda Customers get 25 free transfer to other banks every month. Extra transfers to other banks cost ₦10 each.</p>
                         <p>**Kuda account holders can deposit money in over 10,000 branches across Nigeria for free.</p>
@@ -150,7 +149,7 @@ const Footer = () => {
                     <p>If you would like to find out more about which Kuda entity you receive services from, please reach out to us via the in-app chat in the Kuda app. Nigerian banking services offered by Kuda Microfinance Bank (RC796975) with registered address at 1-11 Commercial Avenue, Yaba, Lagos, Nigeria. Kuda Microfinance Bank is licensed by the Central Bank of Nigeria. Deposits are insured by the Nigerian Deposit Insurance Corporation (NDIC).</p>
                     <p>UK services are offered by Kuda EMI Ltd (Company No. 13724208) with registered address at 5 New Street Square, London, EC4A 3TW, United Kingdom.</p>
                     <p>Canada services will be provided by Kuda Canada Technologies Limited, an Ontario corporation registered under number 1000286176, with its registered address located at 3080 Yonge Street, Suite 6060, Toronto, Ontario M4N 3N1. Kuda Canada Technologies Limited is duly registered with The Financial Transactions and Reports Analysis Centre of Canada (FINTRAC) as a money service business, bearing registration number M23163015.</p>
-                </FooterInfo>   
+                </FooterConditions>   
             </Wrapper>
         </Container>
     )
@@ -164,31 +163,57 @@ margin-top: 80px;
 margin-bottom: 3rem;
 padding-top: 5%;
 padding-bottom: 1.5rem;
-max-width: 1280px;
+max-width: 1180px;
 margin-left: auto;
 margin-right: auto;
 display: flex;
 /* align-items: center; */
 justify-content: center;
+padding-right: 60px;
+padding-left: 60px;
+
+/* @media (max-width: 1024px) {
+    padding: 0px 40px;
+} */
+
+
+@media (max-width: 768px) {
+    padding-right: 20px;
+    padding-left: 20px;
+    /* width: 100%; */
+}
 `
 
 const Wrapper = styled.div`
-width: 85%;
-padding: 0px 60px;
+/* max-width: 85%; */
+/* padding: 0px 60px; */
 
 @media (max-width: 768px) {
-    padding: 0px 20px;
+    /* padding: 0px 20px; */
     width: 100%;
-}`
+}
+`
 
 const FooterNav = styled.div`
 display: flex;
+/* align-items: center; */
 justify-content: space-between;
+
+@media (max-width: 768px) {
+    flex-wrap: wrap;
+}
 `
 
 const LogoNav = styled.div`
-/* width: 100px; */
+width: 20%;
 height: 24px;
+margin-right: 30px;
+
+@media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 img{
     width: 99px;
     /* height: 20px; */
@@ -199,6 +224,19 @@ img{
 // justify-content: space-between;`
 
 const Nav = styled.div`
+width: 20%;
+margin-right: 30px;
+/* display: flex;
+flex-direction: column; */
+/* align-items: center;
+justify-content: flex-start; */
+
+@media (max-width: 768px) {
+    width: calc(50% - 15px);
+    margin-right: 0px;
+    margin-top: 30px;
+    padding-right: 15px;
+}
 
 p{
     font-family: "Mulish", sans-serif;
@@ -206,6 +244,8 @@ p{
     font-weight: 400;
     line-height: 15.925px;
     margin-bottom: 20px;
+    /* display: flex;
+    align-items: center; */
 
 }
 p:first-child{
@@ -214,6 +254,10 @@ p:first-child{
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;
+    
+}
+p:last-child{
+    margin-bottom: 0px;
 }
 `
 
@@ -250,6 +294,9 @@ button{
             font-weight: 500;
             margin: 0px;
             line-height: 14px;
+            @media (max-width: 440px) {
+                font-size: 12px;
+            }
         }
         span{
             /* border: 1px solid white; */
@@ -258,11 +305,18 @@ button{
             font-size: 8.45px;
             font-weight: 300;
             line-height: 10px;
+
+            @media (max-width: 440px) {
+                font-size: 8px;
+            }
         }
 
     }
     img{
         height: 25px;
+        @media (max-width: 440px) {
+            height: 20px;
+        }
     }
 }
 button:first-child{
@@ -288,6 +342,9 @@ button:last-child{
         color: rgb(223, 227, 255);
         font-size: 12.5px;
         /* line-height:  13px; */
+        @media (max-width: 440px) {
+            font-size: 12px;
+        }
     }
     span{
         color: rgb(223, 227, 255);
@@ -315,9 +372,36 @@ const FooterContact = styled.div`
 margin: 4.3rem 0px;
 display: flex;
 justify-content: space-between;
-`
 
+@media (max-width: 768px) {
+    flex-direction: column;
+}
+`
+  
 const Contact = styled.div`
+width: 33.3%;
+margin-right: 30px;
+
+&:first-child{
+    @media (max-width: 768px) {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 30px;
+    }
+    
+}
+
+&:last-child{
+    margin-right: 0px;
+}
+
+@media (max-width: 768px) {
+    margin-right: 0px;
+    margin-top: 30px;
+    padding-right: 15px;
+    width: 50%;
+}
+
 a{
     color: rgb(64, 25, 109);
     font-family: "Mulish", sans-serif;
@@ -329,22 +413,24 @@ a{
 h1{
     color: rgb(64, 25, 109);
     font-family: "Mulish", sans-serif;
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: 700;
-    line-height: 21px;
+    line-height: 1.5rem;
     margin-bottom: 15px;
 }
 p{
     font-family: "Mulish", sans-serif;
-    font-size: 12.25px;
+    font-size: .875rem;
     font-weight: 400;
-    line-height: 18.375px;
+    line-height: 1.5;
+    max-width: 200px;
 }
 `
 
 const ContactMedia = styled.div`
 display: flex;
-justify-content: center;
+align-items: center;
+/* justify-content: center; */
 margin-top: 23px;`
 
 const Media = styled.div`
@@ -365,7 +451,7 @@ p{
 }
 `
 
-const FooterInfo = styled.div`
+const FooterConditions = styled.div`
 p{
     color: rgb(99, 99, 105);
     font-family: "Mulish", sans-serif;
@@ -373,6 +459,7 @@ p{
     font-weight: 400;
     line-height: 1.5rem;
     margin-bottom: 1.5rem;
+    text-align: justify;
 }`
 
 // const InfoText = styled.div``

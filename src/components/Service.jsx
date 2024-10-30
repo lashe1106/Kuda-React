@@ -18,9 +18,12 @@ const Service = (props) => {
                         </GoTo>
                     </TextWrapper>
                 </TextBox>
-                <ImageBox $imagejustify={props.$imagejustify}>
-                    <img src= {props.image} alt="" />
+                <ImageBox>
+                    <ImageWrapper $imagejustify={props.$imagejustify}>
+                        <img src= {props.image} alt="" />
+                    </ImageWrapper>
                 </ImageBox>
+                
             </Wrapper>
         </Container>
     )
@@ -35,7 +38,7 @@ margin-right: auto;
 padding: 0px 10px;
 display: flex;
 justify-content: center;
-margin-top: 200px;
+margin-top: 12.5%;
 /* border: 1px solid black; */
 
 @media (max-width: 768px) {
@@ -50,6 +53,11 @@ flex-wrap: wrap;
 justify-content: space-between;
 align-items: center;
 
+@media (max-width: 991px) {
+    flex-direction: column;
+    gap: 40px;
+}
+
 @media (max-width: 768px) {
     flex-direction: column;
     gap: 60px;
@@ -58,29 +66,30 @@ align-items: center;
 const TextBox = styled.div`
 width: 45%;
 /* border: 1px solid black; */
-display: flex;
+/* display: flex;
 flex-direction: column;
-align-items: ${(props) => props.aligncenter || "normal"};
+align-items: ${(props) => props.aligncenter || "normal"}; */
+
+@media (max-width: 991px) {
+    width: 100%;
+}
 
 @media (max-width: 768px) {
-    align-items: center;
-    justify-content: center;
-    /* text-align: center; */
     width: 100%;
 }`
 
 const TextWrapper = styled.div`
-/* width: 45%; */
 display: flex;
 flex-direction: column;
-/* align-items: center; */
-/* border: 1px solid black; */
+
+@media (max-width: 991px) {
+    align-items: center;
+    text-align: center;
+}
 
 @media (max-width: 768px) {
     align-items: center;
-    /* justify-content: center; */
     text-align: center;
-    /* width: 100%; */
 }
 
 h1{
@@ -103,16 +112,42 @@ p{
 const ImageBox = styled.div`
 box-sizing: border-box;
 width: 55%;
-display: flex;
-justify-content: ${(props) => props.$imagejustify || "flex-start"};
-/* align-items: center; */
-/* border: 1px solid black; */
+
+@media (max-width: 991px) {
+    width: 100%;   
+}
 
 @media (max-width: 768px) {
     width: 100%;    
+}`
+
+const ImageWrapper = styled.div`
+width: 100%;
+height: 100%;
+margin: 0px auto;
+outline: none;
+/* display: flex;
+justify-content: ${(props) => props.$imagejustify || "flex-start"}; */
+/* align-items: center; */
+/* border: 1px solid black; */
+@media (max-width: 991px) {
+    width: 100%; 
+    display: flex;
+    justify-content: center;   
+}
+
+@media (max-width: 768px) {
+    width: 100%; 
+    display: flex;
+    justify-content: center;      
 }
 
 img{
+    max-width: 500px;
+    height: auto;
+    max-width: 500px;
+    width: 100%;
+
     @media (max-width: 768px) {
         width: 100%;
     }
@@ -123,8 +158,6 @@ const GoTo = styled.div`
 display: flex;
 align-items: center;
 margin-top: 20px;
-/* border: 1px solid black;  */
-/* font-weight: 700; */
 a{
     color: rgb(64, 25, 109);
     font-family: "Mulish", sans-serif;

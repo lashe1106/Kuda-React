@@ -18,6 +18,9 @@ export default Personal
 const Container = styled.div`
 box-sizing: border-box;
 padding: 40px 0px 55px 0px;
+margin-top: 58px;
+margin-left: auto;
+margin-right: auto;
 
 @media (max-width: 768px) {
     padding-top: 70px;
