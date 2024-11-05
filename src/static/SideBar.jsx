@@ -6,12 +6,12 @@ import {IoCloseOutline} from "react-icons/io5"
 import {IoMdArrowDropright} from "react-icons/io"
 import Personal from "../pages/Personal"
 
-const Sidebar = () => {
-    const [sideBar, setSideBar] = useState(true)
+const  = () => {
+    const [, set] = useState(true)
     const [closeMenu, setCloseMenu] = useState(false)
 
-    const handleSideBar = () => {
-        setSideBar(!sideBar)
+    const handle = () => {
+        set(!)
     }
 
     const handleCloseMenu = () => {
@@ -39,25 +39,25 @@ const Sidebar = () => {
                         <JoinBtn>Join Kuda</JoinBtn> 
                     </Buttons>
                     <NavWrapper>
-                        <Nav onClick={handleSideBar}>
+                        <Nav onClick={handle}>
                             <nav>Personal</nav>
                             <IoMdArrowDropright />
                         </Nav>
-                        <Nav onClick={handleSideBar} >
+                        <Nav onClick={handle} >
                             <nav>Business</nav>
                             <IoMdArrowDropright />
                         </Nav>
-                        <Nav onClick={handleSideBar}>
+                        <Nav onClick={handle}>
                             <nav>Company</nav>
                             <IoMdArrowDropright />
                         </Nav>
-                        <Nav onClick={handleSideBar}>
+                        <Nav onClick={handle}>
                             <nav>Developers</nav>
                         </Nav>
-                        <Nav onClick={handleSideBar}>
+                        <Nav onClick={handle}>
                             <nav>Contact Us</nav>
                         </Nav>
-                        <Nav onClick={handleSideBar}>
+                        <Nav onClick={handle}>
                             <nav>Help</nav>
                             <IoMdArrowDropright />
                         </Nav>
@@ -70,7 +70,7 @@ const Sidebar = () => {
     )
 }
 
-export default Sidebar
+export default 
 
 const Container = styled.div`
 width: 100%;
@@ -191,7 +191,7 @@ width: 100%;`
 
 const Nav = styled.div`
 box-sizing: border-box;
-border-bottom: 1px solid rgba(228, 7%, 87%, .5);
+border-bottom: 1px solid rgba(220, 220, 224, 0.5);
 color: rgb(64, 25, 109);
 /* display: flex;
 justify-content: space-between; */

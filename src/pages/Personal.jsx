@@ -2,6 +2,7 @@ import styled from "styled-components"
 import Hero from "../components/Hero"
 import Info from "../components/Info"
 import Section from "../components/Section"
+import Active from "../components/Active"
 
 const Personal = () => {
     return (
@@ -9,6 +10,7 @@ const Personal = () => {
             <Hero />
             <Info />
             <Section />
+            <Active />
         </Container>
     )
 }

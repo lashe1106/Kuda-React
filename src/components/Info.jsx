@@ -65,7 +65,7 @@ export default Info
 
 const Container = styled.div`
 box-sizing: border-box;
-padding: 0px, 10px;
+padding: 0px 10px;
 max-width: 1280px;
 margin-right: auto;
 margin-left: auto;

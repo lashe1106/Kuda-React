@@ -145,7 +145,6 @@ justify-content: ${(props) => props.$imagejustify || "flex-start"}; */
 img{
     max-width: 500px;
     height: auto;
-    max-width: 500px;
     width: 100%;
 
     @media (max-width: 768px) {
