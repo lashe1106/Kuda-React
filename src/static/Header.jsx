@@ -1,37 +1,43 @@
 import styled from 'styled-components'
-import {css} from "styled-components"
+// import {css} from "styled-components"
 import {MdArrowDropDown} from 'react-icons/md';
 import Brand from "../assets/png/brand.png"
 import Flag from "../assets/svg/flag.svg"
 import { IoReorderTwoOutline } from "react-icons/io5";
-import { IoCloseOutline } from "react-icons/io5"
+// import { IoCloseOutline } from "react-icons/io5"
 // import { IoMdArrowDropright } from "react-icons/io"
 import {Link} from "react-router-dom"
-// import SideBar from "./SideBar"
-import { useState } from 'react';
+import SideBar from "./SideBar"
+import { useState, useEffect } from 'react';
 
 
 const Header = () => {
-    // const [toggle, setToggle] = useState(false)
-    const [sideBar, setSideBar] = useState(false)
+    const [sideMenu, setSideMenu] = useState(false)
 
-    // const handleSetToggle = () => {
-    //     setToggle(!toggle) 
-    // }
-
-    const toggleSideBar = () => {
-        setSideBar(!sideBar) 
+    const toggleSideMenu = () => {
+        setSideMenu(!sideMenu) 
     }
+
+    useEffect(() => {
+        if (sideMenu) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = "auto"
+        }
+        return(() => {
+            document.body.style.overflow = "auto"
+        })
+    }, [sideMenu])
 
     return(
         <>
-            <Container $sidebar = {sideBar}>
-                <Wrapper $sidebar={sideBar}>
+            <Container>
+                <Wrapper>
                     <LogoNav>
                         <Logo>
                             <img src= {Brand} alt="" />
                         </Logo>
-                        <Nav $sidebar={sideBar}>
+                        <Nav>
                             <Link style={{ textDecoration: "none" }} to="/">
                                 <nav>
                                     <span>Personal</span>
@@ -58,20 +64,20 @@ const Header = () => {
                             </Link>
                         </Nav>
                     </LogoNav>
-                    <Buttons $sidebar={sideBar}>
-                        <SignBtn $sidebar={sideBar}>Sign In</SignBtn>
-                        <JoinBtn $sidebar={sideBar}>Join Kuda</JoinBtn>
+                    <Buttons>
+                        <SignBtn>Sign In</SignBtn>
+                        <JoinBtn>Join Kuda</JoinBtn>
                     </Buttons>
-                    <FlagBtn $sidebar={sideBar}>
+                    <FlagBtn >
                         <img src= {Flag} alt="" /> 
                     </FlagBtn>
-                    <SideNav onClick={toggleSideBar}>
-                        {sideBar === false ? <IoReorderTwoOutline /> : <IoCloseOutline />}
-                        
+                    <SideNav onClick={toggleSideMenu}>
+                        <IoReorderTwoOutline size={30} /> 
                     </SideNav>
                 </Wrapper>
             </Container>
-            {/* {toggle === false ? null : <SideBar toggle = {toggle} setToggle = {setToggle} />} */}
+            
+            {sideMenu  === false ? null : <SideBar toggleSideMenu={toggleSideMenu} />}
         </>
         
     )
@@ -91,13 +97,6 @@ width: 100%;
 justify-content: space-between;
 align-items: center;
 z-index: 1000;
-
-${(props) => props.$sidebar && css`
-    height: 100vh;
-    /* overflow-y: scroll; */
-    /* bottom: 0px; */
-    align-items: flex-start;
-`}
 `
 
 const Wrapper = styled.div`
@@ -109,27 +108,13 @@ justify-content: space-between;
 align-items: center;
 padding: 0px 60px;
 
-${(props) => props.$sidebar && css`
-    /* height: 100vh; */
-    /* flex-direction: column; */
-    box-sizing: border-box;
-    height: 64px;
-    padding: 20px;
-    width: 100%;
-    margin: 0px auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+@media (max-width: 1024px) {
+    padding: 0px 40px;
+}
 
-`}
-
-    @media (max-width: 1024px) {
-        padding: 0px 40px;
-    }
-
-    @media (max-width: 768px) {
-        padding: 0px 20px;
-    }
+@media (max-width: 768px) {
+    padding: 0px 20px;
+}
 `
 
 const LogoNav = styled.div`
@@ -168,12 +153,13 @@ nav{
 }
 
 @media (max-width: 768px) {
-    display: ${(props) => props.$sidebar ? "block" : "none"}
+    display: none;
 }
 
 @media (max-width: 991px) {
-    display: ${(props) => props.$sidebar ? "block" : "none"};
-}`
+    display: none;
+}
+`
 
 const Buttons = styled.div`
 display: flex;
@@ -186,19 +172,6 @@ margin-left: auto;
 
 @media (max-width: 991px) {
     display: none;
-
-    ${(props) => props.$sidebar && css`
-        height: 40px;
-        display: flex;
-        /* justify-content: center; */
-        position: fixed;
-        top: 64px;
-        left: 0px;
-        width: 100%;
-        margin: 0 auto;
-        padding: 20px;
-        border: 1px solid black;
-    `}
 }
 `
 
@@ -212,42 +185,6 @@ font-weight: 700;
 line-height: 12.25px;
 color: rgb(64, 25, 109);
 cursor: pointer;
-
-@media (max-width: 768px) {
-
-    ${(props) => props.$sidebar && css`
-        background-color: rgb(223, 227, 255);
-        max-width: 115px;
-        width: 100%;
-        align-items: center;
-        display: flex;
-        font-size: 13px;
-        font-weight: 700;
-        justify-content: center;
-        line-height: 1;
-        padding: 15px;
-        margin-right: 1rem;
-        border-radius: 10px;
-    `}
-}
-
-@media (max-width: 991px) {
-    
-    ${(props) => props.$sidebar && css`
-        background-color: rgb(223, 227, 255);
-        max-width: 135px;
-        width: 100%;
-        align-items: center;
-        display: flex;
-        font-size: 13px;
-        font-weight: 700;
-        justify-content: center;
-        line-height: 1;
-        padding: 15px;
-        border-radius: 10px;
-        margin-right: 1rem;
-    `}
-}
 `
 
 const JoinBtn = styled.div`
@@ -267,32 +204,7 @@ line-height: 14px;
 background-color: rgb(64, 25, 109);
 margin: 0px 25px;
 cursor: pointer;
-
-@media (max-width: 768px) {
-
-    ${(props) => props.$sidebar && css`
-        max-width: 115px;
-        width: 100%;
-        font-size: 13px;
-        line-height: 1;
-        padding: 20px;
-        height: 0px;
-        margin: 0px;
-    `}
-}
-
-@media (max-width: 991px) {
-    
-    ${(props) => props.$sidebar && css`
-        max-width: 135px;
-        width: 100%;
-        font-size: 13px;
-        line-height: 1;
-        height: 0px;
-        padding: 20px;
-        margin: 0px;
-    `}
-}`
+`
 
 const FlagBtn = styled.div`
 box-sizing: border-box;
@@ -303,7 +215,7 @@ height: 30px;
 width: 30px;
 border-radius: 50%;
 padding: 5px;
-display: ${(props) => props.$sidebar ? "none" : "flex"};
+display: flex;
 justify-content: center;
 align-items: center;
 /* margin-right: 50px; */

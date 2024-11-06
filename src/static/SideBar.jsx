@@ -1,111 +1,101 @@
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
-import {useState} from "react"
-import Brand from "../assets/png/brand.png"
+import KBrand from "../assets/png/brand.png"
 import {IoCloseOutline} from "react-icons/io5"
 import {IoMdArrowDropright} from "react-icons/io"
-import Personal from "../pages/Personal"
 
-const  = () => {
-    const [, set] = useState(true)
-    const [closeMenu, setCloseMenu] = useState(false)
-
-    const handle = () => {
-        set(!)
-    }
-
-    const handleCloseMenu = () => {
-        setCloseMenu(!closeMenu)
-        console.log("closing menu");
-        
-    }
-
+const SideBar = ({toggleSideMenu}) => {
     return (
-        <>
-            <Container>
-                <Wrapper>
-                    <Header>
-                        <HeaderWrapper>
-                            <Logo>
-                                <img src= {Brand} alt="" />
-                            </Logo>
-                            <CloseNav onClick={handleCloseMenu}>
-                                <IoCloseOutline size={23} />
-                            </CloseNav>
-                        </HeaderWrapper>
-                    </Header>
-                    <Buttons>
-                        <SignBtn>Sign In</SignBtn>
-                        <JoinBtn>Join Kuda</JoinBtn> 
-                    </Buttons>
-                    <NavWrapper>
-                        <Nav onClick={handle}>
+        <Container>
+            <Wrapper>
+                <Header>
+                    <HeaderWrapper>
+                        <Logo>
+                            <img src= {KBrand} alt="" />
+                        </Logo>
+                        <CloseNav onClick={toggleSideMenu} >
+                            <IoCloseOutline size={30} />
+                        </CloseNav>
+                    </HeaderWrapper>
+                </Header>
+                <Buttons>
+                    <JoinBtn>Join Kuda</JoinBtn>
+                    <SignBtn>Sign In</SignBtn>
+                </Buttons>
+                <NavWrapper>
+                    <Link style={{ textDecoration: "none" }} to="/" onClick={toggleSideMenu}>
+                        <Nav>
                             <nav>Personal</nav>
-                            <IoMdArrowDropright />
+                            <IoMdArrowDropright size={17} />
                         </Nav>
-                        <Nav onClick={handle} >
+                    </Link>
+                    <Link style={{ textDecoration: "none" }} to="/buisness" onClick={toggleSideMenu}>
+                        <Nav>
                             <nav>Business</nav>
-                            <IoMdArrowDropright />
+                            <IoMdArrowDropright size={17} />
                         </Nav>
-                        <Nav onClick={handle}>
+                    </Link>
+                    <Link style={{ textDecoration: "none" }} to="/company" onClick={toggleSideMenu}>
+                        <Nav>
                             <nav>Company</nav>
-                            <IoMdArrowDropright />
+                            <IoMdArrowDropright size={17} />
                         </Nav>
-                        <Nav onClick={handle}>
+                    </Link>
+                    <Link style={{ textDecoration: "none" }} >
+                        <Nav>
                             <nav>Developers</nav>
                         </Nav>
-                        <Nav onClick={handle}>
+                    </Link>
+                    <Link style={{ textDecoration: "none" }} >
+                        <Nav>
                             <nav>Contact Us</nav>
                         </Nav>
-                        <Nav onClick={handle}>
+                    </Link>
+                    <Link style={{ textDecoration: "none" }} to="/help" onClick={toggleSideMenu}>
+                        <Nav>
                             <nav>Help</nav>
-                            <IoMdArrowDropright />
+                            <IoMdArrowDropright size={17} />
                         </Nav>
-                    </NavWrapper>
-                </Wrapper>
-            </Container>
-            {closeMenu === false ? null : <Personal closeMenu = {closeMenu} setCloseMenu = {setCloseMenu}/>}
-        </>
-        
+                    </Link>
+                </NavWrapper>
+            </Wrapper>
+        </Container>
     )
 }
 
-export default 
+export default SideBar
 
 const Container = styled.div`
-width: 100%;
-box-sizing: border-box;
-/* border: 1px solid black; */
+display: none;
+
+@media (max-width: 768px) {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100vh;
+    background-color: white;
+    z-index: 1000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+}
 `
 
 const Wrapper = styled.div`
+/* border: 1px solid black; */
 width: 100%;
-/* min-height: calc(100vh - 80px); */
-height: 100vh;
-/* overflow-x: hidden; */
-background-color: white;
-z-index: 1000;
-position: fixed;
-top: 0px;
-left: 0px;
-align-items: flex-start;
 display: flex;
 flex-direction: column;
-margin-left: auto;`
+`
 
 const Header = styled.div`
-/* box-shadow: 0 4px 13px rgba(0, 0, 0, .05); */
-/* height: 58px; */
-/* left: 0;
-position: fixed;
-top: 0; */
+/* border: 1px solid black; */
 width: 100%;
-/* z-index: 99;
-display: flex;
-align-items: center;*/
 ` 
 
 const HeaderWrapper = styled.div`
+/* border: 1px solid black; */
 box-sizing: border-box;
 height: 64px;
 padding: 20px;
@@ -117,85 +107,106 @@ justify-content: space-between;
 `
 
 const Logo = styled.div`
+/* border: 1px solid black; */
 min-width: 100px;
 display: flex;
 align-items: center;
-/* height: 20px; */
 img{
     width: 72px;
-    /* height: 20px; */
 }`
 
 const CloseNav = styled.div`
-height: 20px`
+/* border: 1px solid black; */
+display: flex;
+align-items: center;
+`
 
 const Buttons = styled.div`
+/* border: 1px solid black; */
+box-sizing: border-box;
 display: flex;
-justify-content: center;
 align-items: center;
 margin-left: auto;
 margin-right: auto;
-padding: 20px 20px 0px 20px;
+padding: 20px;
 width: 100%;`
 
 const SignBtn = styled.div`
+box-sizing: border-box;
 background-color: transparent;
+height: 40px;
+width: 100%;
+max-width: 115px;
+padding: 15px;
 border: none;
-outline: none;
-font-family: "Mulish", sans-serif;
-font-size: 12.25px;
-font-weight: 700;
-line-height: 12.25px;
-color: rgb(64, 25, 109);
-
-/* @media (max-width: 768px) {
-    display: none;
-}
-
-@media (max-width: 991px) {
-    display: none;
-} */
-`
-
-const JoinBtn = styled.div`
-width: 136px;
-height: 43px;
 border-radius: 10px;
-outline: none;
-border: none;
 display: flex;
 justify-content: center;
 align-items: center;
-color: #fff;
 font-family: "Mulish", sans-serif;
-font-size: 14px;
+font-size: 13px;
 font-weight: 700;
-line-height: 14px;
+line-height: 1;
+color: rgb(64, 25, 109);
+background-color: rgb(223, 227, 255);
+cursor: pointer;
+`
+
+const JoinBtn = styled.div`
+box-sizing: border-box;
+background-color: transparent;
+height: 40px;
+width: 100%;
+max-width: 115px;
+padding: 15px;
+margin-right: 1rem;
+border: none;
+border-radius: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: "Mulish", sans-serif;
+font-size: 13px;
+font-weight: 700;
+line-height: 1;
+color: #fff;
 background-color: rgb(64, 25, 109);
-margin: 0px 25px;
-
-/* @media (max-width: 768px) {
-    display: none;
-}
-
-
-@media (max-width: 991px) {
-    display: none;
-} */
+cursor: pointer;
 `
 
 const NavWrapper = styled.div`
-padding: 20px;
+box-sizing: border-box;
+padding: 0px 20px;
 margin-top: 25px;
-width: 100%;`
+width: 100%;
+display: flex;
+flex-direction: column;
+/* border: 1px solid black; */
+`
 
 const Nav = styled.div`
+/* border: 1px solid black; */
 box-sizing: border-box;
-border-bottom: 1px solid rgba(220, 220, 224, 0.5);
+border-bottom: 1px solid hsla(228, 7%, 87%, .5);
+;
 color: rgb(64, 25, 109);
-/* display: flex;
-justify-content: space-between; */
+display: flex;
+justify-content: space-between;
 align-items: center;
 padding: 20px 0px;
 cursor: pointer;
+
+&:last-child{
+    border-bottom: none;
+}
+
+nav{
+    box-sizing: border-box;
+    font-family: "Mulish", sans-serif;
+    font-size: 16.1px;
+    font-weight: 700;
+    line-height: 24.15px;
+    color: rgb(64, 25, 109);
+    cursor: pointer;
+}
 `
